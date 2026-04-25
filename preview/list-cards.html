@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>List cards</title>
+<link rel="stylesheet" href="card.css">
+<style>
+  .variant-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: #707683;
+    margin: 18px 0 8px;
+  }
+  .variant-label:first-of-type { margin-top: 0; }
+
+  /* Shared row chrome */
+  .row-card {
+    padding: 12px 14px;
+    background: #1a1f28;
+    border: 1px solid #2a3342;
+    border-left: 2px solid #00f0a0;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  /* ----- A: current baseline ----- */
+  .a-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+
+  /* ----- B: command-first ----- */
+  .b-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+  .b-cmd { color:#00f0a0; font-weight:600; }
+  .b-flag { color:#ffb347; }
+  .b-arg { color:#e5e7eb; }
+  .b-tagline { color:#a0a6ae; margin-top:4px; font-size:12px; }
+
+  /* ----- C: structured repo row (RECOMMENDED) ----- */
+  .c-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+  .c-top {
+    display:flex; align-items:baseline; justify-content:space-between;
+    gap:12px; flex-wrap:wrap;
+  }
+  .c-name { color:#e5e7eb; font-weight:700; font-size:13.5px; letter-spacing:-0.005em; }
+  .c-org { color:#707683; font-weight:400; }
+  .c-status {
+    font-family: var(--f-mono);
+    font-size:10.5px; letter-spacing:0.08em;
+    padding:1px 7px;
+    border:1px solid currentColor;
+    border-radius:3px;
+  }
+  .c-status--ship  { color:#00f0a0; }
+  .c-status--wip   { color:#ffb347; }
+  .c-status--frozen{ color:#707683; }
+  .c-desc { color:#a0a6ae; margin-top:4px; font-size:12.5px; }
+  .c-meta {
+    margin-top:8px; display:flex; gap:16px; flex-wrap:wrap;
+    font-size:11.5px; color:#707683; font-variant-numeric:tabular-nums;
+  }
+  .c-meta b { color:#a0a6ae; font-weight:500; }
+  .c-dot {
+    display:inline-block; width:8px; height:8px; border-radius:50%;
+    vertical-align:-1px; margin-right:6px;
+  }
+  .c-dot--dart  { background:#00b4ab; }
+  .c-dot--ts    { background:#3178c6; }
+  .c-dot--rust  { background:#dea584; }
+  .c-dot--sh    { background:#89e051; }
+  .c-kbd {
+    font-family:var(--f-mono); font-size:10.5px;
+    color:#ffb347; background:#0d1117; border:1px solid #2a3342;
+    padding:1px 5px; border-radius:3px;
+  }
+
+  /* ----- D: two-column with ASCII bar ----- */
+  .d-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+  .d-grid { display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:baseline; }
+  .d-bar {
+    font-family:var(--f-mono); font-size:10.5px; color:#2a3342;
+    letter-spacing:-0.04em; white-space:nowrap;
+  }
+  .d-bar b { color:#00f0a0; }
+  .d-tag { color:#707683; font-size:11px; }
+  .d-tag b { color:#ffb347; font-weight:500; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">List cards &nbsp;·&nbsp; four takes on representing GitHub repos</div>
+
+  <!-- ============================================================
+       A: baseline (what's on the site today)
+       ============================================================ -->
+  <div class="variant-label">A &nbsp;·&nbsp; BASELINE — tagline + period-terminated status</div>
+  <ul class="a-list">
+    <li class="row-card">
+      <strong style="color:#e5e7eb">cloud_sync</strong> — bidirectional file sync for Dart and Flutter.
+      <em style="color:#ffb347; font-style:italic; font-weight:500">Shipping.</em>
+    </li>
+    <li class="row-card">
+      <strong style="color:#e5e7eb">forge</strong> — one CLI, four AI coding assistants.
+      <em style="color:#ffb347; font-style:italic; font-weight:500">Shipping.</em>
+    </li>
+  </ul>
+
+  <!-- ============================================================
+       B: command-first — leads with the install, not the tagline
+       ============================================================ -->
+  <div class="variant-label">B &nbsp;·&nbsp; COMMAND-FIRST — row reads like a shell invocation</div>
+  <ul class="b-list">
+    <li class="row-card">
+      <span class="b-cmd">$ pub add</span> <span class="b-arg">cloud_sync</span> <span class="b-flag">--dev</span>
+      <div class="b-tagline">bidirectional file sync for Dart and Flutter.</div>
+    </li>
+    <li class="row-card">
+      <span class="b-cmd">$ npx</span> <span class="b-arg">forge-ai-assist@latest</span>
+      <div class="b-tagline">one CLI, four AI coding assistants.</div>
+    </li>
+  </ul>
+
+  <!-- ============================================================
+       C: structured repo row  ←  RECOMMENDED
+       ============================================================ -->
+  <div class="variant-label">C &nbsp;·&nbsp; STRUCTURED REPO ROW — recommended</div>
+  <ul class="c-list">
+    <li class="row-card">
+      <div class="c-top">
+        <div>
+          <span class="c-org">arcanelabsio/</span><span class="c-name">cloud_sync</span>
+        </div>
+        <span class="c-status c-status--ship">SHIPPING</span>
+      </div>
+      <div class="c-desc">bidirectional file sync for Dart and Flutter.</div>
+      <div class="c-meta">
+        <span><span class="c-dot c-dot--dart"></span><b>Dart</b></span>
+        <span><b>v1.4.2</b></span>
+        <span>★ 284</span>
+        <span>updated 3d ago</span>
+        <span class="c-kbd">MIT</span>
+      </div>
+    </li>
+    <li class="row-card" style="border-left-color:#ffb347; transform:translateX(2px);">
+      <div class="c-top">
+        <div>
+          <span class="c-org">arcanelabsio/</span><span class="c-name">forge</span>
+        </div>
+        <span class="c-status c-status--ship">SHIPPING</span>
+      </div>
+      <div class="c-desc">one CLI, four AI coding assistants.</div>
+      <div class="c-meta">
+        <span><span class="c-dot c-dot--ts"></span><b>TypeScript</b></span>
+        <span><b>v1.2.3</b></span>
+        <span>★ 1.1k</span>
+        <span>updated 2d ago</span>
+        <span class="c-kbd">MIT</span>
+      </div>
+      <div class="muted" style="font-size:10px; margin-top:6px;">↑ hovered state · border shifts amber, row nudges 2 px</div>
+    </li>
+    <li class="row-card">
+      <div class="c-top">
+        <div>
+          <span class="c-org">arcanelabsio/</span><span class="c-name">shellcraft</span>
+        </div>
+        <span class="c-status c-status--wip">ACTIVE BUILD</span>
+      </div>
+      <div class="c-desc">a macOS developer-machine bootstrapper.</div>
+      <div class="c-meta">
+        <span><span class="c-dot c-dot--sh"></span><b>Shell</b></span>
+        <span><b>v0.9.1</b></span>
+        <span>★ 62</span>
+        <span>updated 5h ago</span>
+        <span class="c-kbd">MIT</span>
+      </div>
+    </li>
+    <li class="row-card" style="opacity:0.75;">
+      <div class="c-top">
+        <div>
+          <span class="c-org">arcanelabsio/</span><span class="c-name">drive_sync_flutter</span>
+        </div>
+        <span class="c-status c-status--frozen">FROZEN · v1.2.0</span>
+      </div>
+      <div class="c-desc">Google Drive backed file sync for Flutter.</div>
+      <div class="c-meta">
+        <span><span class="c-dot c-dot--dart"></span><b>Dart</b></span>
+        <span>★ 118</span>
+        <span>last release 11 mo ago</span>
+        <span class="c-kbd">MIT</span>
+      </div>
+    </li>
+  </ul>
+
+  <!-- ============================================================
+       D: ASCII progress bar — visually quirky, unique to this brand
+       ============================================================ -->
+  <div class="variant-label">D &nbsp;·&nbsp; ASCII MATURITY BAR — playful, one-glance status</div>
+  <ul class="d-list">
+    <li class="row-card">
+      <div class="d-grid">
+        <div><strong style="color:#e5e7eb">cloud_sync</strong> <span class="muted">— bidirectional file sync for Dart and Flutter.</span></div>
+        <span class="d-tag"><b>v1.4.2</b> · 3d</span>
+      </div>
+      <div class="d-bar" style="margin-top:4px;">
+        <b>████████████████████████</b>══════ <span style="color:#00f0a0">SHIPPING</span>
+      </div>
+    </li>
+    <li class="row-card">
+      <div class="d-grid">
+        <div><strong style="color:#e5e7eb">shellcraft</strong> <span class="muted">— a macOS developer-machine bootstrapper.</span></div>
+        <span class="d-tag"><b>v0.9.1</b> · 5h</span>
+      </div>
+      <div class="d-bar" style="margin-top:4px;">
+        <b style="color:#ffb347">████████████████</b>══════════════ <span style="color:#ffb347">ACTIVE</span>
+      </div>
+    </li>
+    <li class="row-card" style="opacity:0.75;">
+      <div class="d-grid">
+        <div><strong style="color:#e5e7eb">drive_sync_flutter</strong> <span class="muted">— Google Drive backed file sync.</span></div>
+        <span class="d-tag"><b>v1.2.0</b> · 11 mo</span>
+      </div>
+      <div class="d-bar" style="margin-top:4px;">
+        ████████████████████████████████ <span class="muted">FROZEN</span>
+      </div>
+    </li>
+  </ul>
+
+</div>
+</body>
+</html>

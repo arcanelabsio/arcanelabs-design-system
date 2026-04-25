@@ -1,0 +1,219 @@
+/* ======================================================================
+   Arcane Labs — Design tokens
+   Ported from src/styles/editorial.css in the arcanelabs.info repo.
+   Terminal-window aesthetic. Dark-only. JetBrains Mono throughout.
+   ====================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* ---------- Core surface tokens ---------- */
+  --bg: #080b10;           /* page background — near-black with blue cast */
+  --bg-2: #0d1117;         /* terminal-window fill */
+  --subtle: #1a1f28;       /* cards, chrome bar, code wells */
+  --border: #2a3342;       /* 1px hairlines, grid separators */
+
+  /* ---------- Foreground tokens ---------- */
+  --fg: #e5e7eb;           /* body text, high contrast */
+  --fg-mute: #a0a6ae;      /* secondary text, nav links */
+  --muted: #707683;        /* tertiary, timestamps, dots */
+
+  /* ---------- Accent tokens ---------- */
+  --mint: #00f0a0;         /* primary accent, links, prompt */
+  --mint-soft: #6feecf;    /* link hover, string literals */
+  --amber: #ffb347;        /* secondary accent, emphasis, rule line */
+  --amber-soft: #ffd280;   /* amber hover */
+  --red: #ff6b6b;          /* errors, destructive */
+  --blue: #7ab8ff;         /* numbers, variables in syntax highlight */
+
+  /* ---------- Traffic-light tokens (terminal chrome) ---------- */
+  --tl-red: #ff5f56;
+  --tl-amber: #ffbd2e;
+  --tl-green: #27c93f;
+
+  /* ---------- Texture ---------- */
+  --grid-line: rgba(0, 240, 160, 0.015);
+  /* Faint mint grid, 40px × 40px, applied to body */
+
+  /* ---------- Semantic aliases ---------- */
+  --accent-primary: var(--mint);
+  --accent-secondary: var(--amber);
+  --link: var(--mint);
+  --link-hover: var(--mint-soft);
+  --code-fg: var(--amber);
+  --error: var(--red);
+
+  /* ---------- Typography ---------- */
+  --f-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* No sans, no serif. The entire system is monospace. */
+
+  /* Base body: 14px / 1.7, -apple smoothing on */
+  --fs-body: 14px;
+  --lh-body: 1.7;
+
+  /* Semantic type ramp (post / prose scale) */
+  --fs-hero: clamp(28px, 5.5vw, 56px);     /* .lh__name / h1 */
+  --lh-hero: 1.05;
+  --ls-hero: -0.02em;
+
+  --fs-post-title: clamp(24px, 3.8vw, 36px);
+  --lh-post-title: 1.1;
+
+  --fs-h2-prose: 20px;                     /* prose h2 inside posts */
+  --fs-h2-post: 18px;
+  --fs-h2-section: 15px;                   /* .lh h2 — sidebar-style */
+  --ls-h2-section: 0.03em;
+
+  --fs-h3-prose: 16px;
+  --fs-h3-post: 15px;
+
+  --fs-small: 13px;                        /* nav, greeting, code, meta */
+  --fs-xsmall: 12px;                       /* footer, post-head */
+  --fs-micro: 11px;                        /* chrome title */
+
+  /* ---------- Radii ---------- */
+  --r-window: 10px;        /* terminal window */
+  --r-card: 6px;           /* nav, footer, post envelope */
+  --r-control: 4px;        /* code blocks, meta grid, list rows */
+  --r-tight: 3px;          /* inline code */
+
+  /* ---------- Shadows ---------- */
+  --shadow-window: 0 20px 60px -20px rgba(0, 0, 0, 0.5),
+                   0 0 0 1px rgba(0, 240, 160, 0.03);
+  /* Deep drop + hairline mint ring. The only elevation in the system. */
+
+  /* ---------- Spacing rhythm ---------- */
+  --page-pad: clamp(24px, 3.5vw, 56px);
+  --section-gap: clamp(28px, 5vw, 48px);
+  --sep-gap: clamp(40px, 6vw, 72px);
+  --rule-gap: clamp(28px, 4vw, 44px);
+
+  /* ---------- Motion ---------- */
+  --t-fast: 140ms ease;    /* link color, nav hover */
+  --t-mid: 160ms ease;     /* list-card translate + border */
+  --t-slow: 240ms ease;    /* theme transitions */
+  /* No bounce, no spring. Linear-ease only. */
+}
+
+/* ======================================================================
+   Semantic bindings — map tokens onto default elements.
+   Include colors_and_type.css to get the base typography + color defaults.
+   Full component styling still lives in editorial.css.
+   ====================================================================== */
+
+html {
+  background: var(--bg);
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-mono);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero / name — terminal file-header */
+h1 {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: var(--ls-hero);
+  color: var(--fg);
+  margin: 0 0 16px;
+}
+
+/* Section label — small, uppercase-adjacent, amber */
+h2 {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  font-size: var(--fs-h2-section);
+  letter-spacing: var(--ls-h2-section);
+  color: var(--amber);
+  margin: 0 0 16px;
+}
+h2::before { content: "# "; color: var(--amber); opacity: 0.6; }
+
+h3 {
+  font-family: var(--f-mono);
+  font-weight: 600;
+  font-size: var(--fs-h3-prose);
+  color: var(--fg);
+  margin: 1.6em 0 0.6em;
+}
+h3::before { content: "### "; color: var(--amber); opacity: 0.5; }
+
+p {
+  margin: 0 0 1.1em;
+  max-width: 76ch;
+  color: var(--fg);
+  line-height: 1.72;
+}
+
+a {
+  color: var(--mint);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(0, 240, 160, 0.4);
+  padding-bottom: 1px;
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+a:hover {
+  color: var(--mint-soft);
+  border-bottom-color: var(--mint);
+}
+
+em { font-style: italic; color: var(--mint); }
+strong { font-weight: 700; color: var(--amber); }
+
+code {
+  font-family: var(--f-mono);
+  font-size: 0.92em;
+  padding: 2px 6px;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--r-tight);
+  color: var(--amber);
+}
+
+pre {
+  font-family: var(--f-mono);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--mint);
+  padding: 16px 20px;
+  overflow-x: auto;
+  border-radius: 0 var(--r-control) var(--r-control) 0;
+  margin: 1.4em 0;
+  color: var(--fg);
+}
+
+blockquote {
+  margin: 1.4em 0;
+  padding: 10px 16px;
+  background: var(--subtle);
+  border-left: 3px solid var(--amber);
+  font-style: italic;
+  color: var(--fg-mute);
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background: var(--amber);
+  margin: var(--rule-gap) 0;
+  width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation: none !important; }
+}

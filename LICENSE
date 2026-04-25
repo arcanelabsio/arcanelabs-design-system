@@ -1,0 +1,69 @@
+Arcane Labs Site — Dual License
+
+Copyright (c) 2026 Arcane Labs.
+Contact: hello@arcanelabs.info · https://arcanelabs.info
+
+================================================================================
+1. SITE CODE — MIT License
+================================================================================
+
+The following portions of this repository are licensed under the MIT license:
+
+  - Design tokens and component stylesheet (`colors_and_type.css`,
+    `editorial.css`, and any duplicates under `src/styles/` or
+    `ui_kits/`)
+  - React reference components and routes (`src/components/`,
+    `src/routes/`, `src/App.tsx`)
+  - Preview spec cards (`preview/*.html`, `preview/card.css`)
+  - UI kit (`ui_kits/website/index.html` and its stylesheet)
+  - 404 page (`public/404.html`)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+2. SITE CONTENT — Creative Commons Attribution 4.0 (CC BY 4.0)
+================================================================================
+
+The following portions of this repository are licensed under the Creative
+Commons Attribution 4.0 International License (CC BY 4.0):
+
+  - All prose and sample content under `content/` (`pages/`, `posts/`,
+    `projects/`)
+  - All written brand documentation (`README.md`, `SKILL.md`, the
+    voice & tone / visual-foundations sections)
+
+You are free to share and adapt this content for any purpose, even
+commercially, under the condition that you give appropriate credit to
+Arcane Labs (https://arcanelabs.info) and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+================================================================================
+3. TRADEMARKS
+================================================================================
+
+"Arcane Labs", "Longeviti", and "Vael" are trademarks of Arcane Labs. The MIT
+and CC BY licenses granted above do NOT grant any rights to use these
+trademarks in a way that implies endorsement or affiliation. Forks or
+derivatives of this design system must remove the Arcane Labs, Longeviti,
+and Vael word marks, logos, and favicon (`assets/favicon.svg`,
+`public/favicon.svg`, the ASCII wordmark in `src/routes/Home.tsx`) before
+public deployment.
+
+For trademark and branding inquiries, contact contact@arcanelabs.info.
