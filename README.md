@@ -46,35 +46,25 @@ Root files:
 - **`editorial.css`** — full component stylesheet ported from the
   live site. Class-based (`.lh`, `.lh__chrome`, `.lh__nav`,
   `.lh__list`, etc). Depends on the tokens in `colors_and_type.css`.
-- **`assets/`** — logos, favicons, brand SVGs.
-- **`fonts/`** — see **Fonts** below (currently Google-Fonts CDN
-  only — no local `.woff2` files yet).
-- **`preview/`** — small HTML cards for the Design System tab.
-- **`ui_kits/website/`** — the Arcane Labs company site,
-  rebuilt as a static HTML prototype. See `ui_kits/website/README.md`.
-- **`src/`** — React reference snippets (`Nav`, `Footer`,
-  `TerminalShell`, `Markdown`, the route components) lifted from the
-  source repo. **Not a buildable tree** — they import symbols
-  (`./RouteEffects`, `../content/loader`, `./Diagram`,
-  `react-router-dom`, `react-markdown`) that don't ship here.
-  Consume them as copy-paste references when building new consumers.
-- **`content/`** — markdown samples for `home`, `company`, `contact`,
-  one post, three project pages. Useful as shape references for new
-  pages in the same voice.
-- **`public/`** — `favicon.svg` and the `404.html` template.
-- **`chats/`** — the original handoff conversation that produced this
-  bundle. Preserved for context; not load-bearing.
+- **`assets/`** — favicon and the four inline-extracted brand icons
+  (GitHub, Instagram, X, Mail) as standalone SVGs.
+- **`preview/`** — 27 self-contained HTML specimens, one per token
+  or component. Open any of them in a browser to see the live
+  appearance. Together they document the visual contract:
+  consumers should treat changes that alter how these specimens
+  render as breaking.
 - **`CHANGELOG.md`** — every change to tokens, stylesheet, or assets.
-  Consumers who vendor this should pin to a row.
+  Consumers that vendor this should pin to a row.
+- **`STATE.md`** — operator-local current-phase tracker. Not part
+  of the design contract; safe to ignore from a consuming app.
 
-Reference implementations:
-
-- Live: [arcanelabs.info](https://arcanelabs.info) — the canonical
-  rendering of this system.
-- Source: [github.com/arcanelabsio/arcanelabs.info](https://github.com/arcanelabsio/arcanelabs.info)
-  — Vite 5 + React 18 + TypeScript + react-router 6 + SSG prerender.
-  When the React snippets in `src/` raise questions, that repo is
-  authoritative.
+Reference implementations are in the consuming apps. The first one
+is [`arcanelabsio/arcanelabs.info`](https://github.com/arcanelabsio/arcanelabs.info)
+(Vite 5 + React 18 + TypeScript + react-router 6 + SSG prerender) —
+look there if you need to see how the classes are wired into a real
+React app's JSX. Future consumers (Recallable, Vael, Longeviti) will
+each implement their own JSX/Swift/Flutter wiring; this repo
+deliberately ships *no* implementation code.
 
 ---
 
@@ -108,18 +98,21 @@ sync diff is mechanical.
 ### B. Vendor the whole tree (richest)
 
 Drop the entire repo in as `vendor/arcanelabs-design-system/` and
-import from there. You get the assets, the React reference snippets,
-the preview cards, and the UI kit — all available for inspection.
+import from there. You get the tokens, stylesheet, brand assets,
+and the preview specimens — useful when you need to inspect
+component appearance in isolation while debugging an integration.
 
 Either way: when this repo's `CHANGELOG.md` ships a row, the consumer
 ships the matching update. No silent drift.
 
 ### What this repo is not
 
-- **Not a runnable app.** The `src/` tree is reference material.
+- **Not a runnable app.** No build step, no entry point, no JSX.
+  Apps wire the classes into their own framework of choice.
 - **Not an npm package.** Yet. See the note in the intro.
-- **Not a place to land brand-specific app code.** New product UI
-  belongs in the consumer repo. This is shared vocabulary only.
+- **Not a place to land app-specific implementations.** Routes,
+  content, and feature code belong in the consuming repo. This
+  one ships shared visual vocabulary only.
 
 ---
 
@@ -368,11 +361,12 @@ motion.
 
 ## Iconography
 
-- **Custom inline SVGs.** Four icons total across the whole site —
-  `IconGitHub`, `IconInstagram`, `IconX`, `IconMail` — inlined as
-  React components in `src/components/Footer.tsx`. 14×14 px,
-  rendered with `fill="currentColor"` so they follow link-hover
-  transitions. These are copied into `assets/icons/` here.
+- **Custom inline SVGs.** Four icons ship with the system —
+  `github.svg`, `instagram.svg`, `x.svg`, `mail.svg` in
+  `assets/icons/`. 14×14 px source, rendered with
+  `fill="currentColor"` so they follow link-hover transitions.
+  These were extracted from the originating `arcanelabs.info`
+  site footer and are now the canonical copy for all consumers.
 - **No icon font.** No Lucide, Heroicons, Phosphor, etc. in the
   repo. If you need to extend the icon set, match the existing
   style: 14×14 viewBox, single-weight glyph, fills-only (no strokes
@@ -411,10 +405,12 @@ See the **Design System tab** for a card-by-card browse. Short list:
   post envelope.
 - **Brand** — logomarks (wordmark, ASCII, favicon), icons.
 
-UI kit: `ui_kits/website/index.html` — a working React + Babel
-rebuild of the company site using the real class names
-(`.lh`, `.lh__chrome`, `.lh__nav`, etc.) with clickable nav,
-Home / Writing / Project / Company / Contact / 404 screens.
+For full reference renderings of the system in a real app, see
+[arcanelabs.info](https://arcanelabs.info) — the Home / Writing /
+Project / Company / Contact / 404 screens there are the canonical
+worked examples. A future consumer building, e.g., Recallable's
+admin shell will produce its own worked example in *its own* repo;
+those examples don't live here.
 
 ---
 
@@ -436,5 +432,3 @@ Home / Writing / Project / Company / Contact / 404 screens.
    marketing imagery (e.g. for app store screenshots), that style
    would need a separate document.
 
-**Ask**: see the closing message in chat for what would most help
-me tighten this up.

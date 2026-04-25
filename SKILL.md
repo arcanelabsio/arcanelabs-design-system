@@ -1,6 +1,6 @@
 ---
 name: Arcane Labs design system
-description: Design tokens, components, and UI kit ported from the arcanelabs.info company site (Vite + React + TypeScript). Use for any Arcane Labs brand work — studio site content, project pages, app UI in the Arcane Labs visual language. Terminal-window editorial aesthetic, monospace throughout, dark-only, mint-and-amber accents on near-black.
+description: Design tokens, component stylesheet, and brand assets shared across every Arcane Labs app and site. Apps wire the classes into their own framework. Terminal-window editorial aesthetic, monospace throughout, dark-only, mint-and-amber accents on near-black.
 ---
 
 # Arcane Labs — Agent Skill
@@ -11,10 +11,11 @@ Everything you need is in this folder:
 
 - **`README.md`** — full system documentation. Brand context, voice & tone, visual foundations, iconography, caveats. **Read this first.**
 - **`colors_and_type.css`** — design tokens as CSS custom properties. `@import` or copy.
-- **`editorial.css`** — the full component stylesheet ported verbatim from `src/styles/editorial.css` in the source repo. Class-based (`.lh`, `.lh__chrome`, `.lh__nav`, `.lh__list`, `.lh__post`, `.lh__sep`, `.lh__meta`, etc). Depends on tokens in `colors_and_type.css`.
-- **`ui_kits/website/`** — a working, static rebuild of the company site. Six screens + 404, hash-routed. Use as a vocabulary reference and as a starting skeleton for new screens.
+- **`editorial.css`** — the full component stylesheet. Class-based (`.lh`, `.lh__chrome`, `.lh__nav`, `.lh__list`, `.lh__post`, `.lh__sep`, `.lh__meta`, etc). Depends on tokens in `colors_and_type.css`.
 - **`assets/`** — favicon + the four icons (GitHub, Instagram, X, Mail).
-- **`preview/`** — small spec cards for each token and component. Useful if the user wants to see a specific piece in isolation.
+- **`preview/`** — 27 self-contained HTML specimens, one per token or component. Open any in a browser to see the live appearance. They double as the visual contract — token or stylesheet changes that alter how these render are breaking.
+
+For a worked example of the system composed into a real app, see the live [arcanelabs.info](https://arcanelabs.info) site (or its source repo). This repo deliberately ships **no implementation code** — apps wire the classes into their own framework.
 
 ## How to use it
 

@@ -9,14 +9,10 @@ Contact: hello@arcanelabs.info · https://arcanelabs.info
 
 The following portions of this repository are licensed under the MIT license:
 
-  - Design tokens and component stylesheet (`colors_and_type.css`,
-    `editorial.css`, and any duplicates under `src/styles/` or
-    `ui_kits/`)
-  - React reference components and routes (`src/components/`,
-    `src/routes/`, `src/App.tsx`)
+  - Design tokens (`colors_and_type.css`)
+  - Component stylesheet (`editorial.css`)
   - Preview spec cards (`preview/*.html`, `preview/card.css`)
-  - UI kit (`ui_kits/website/index.html` and its stylesheet)
-  - 404 page (`public/404.html`)
+  - UI icons (`assets/icons/*.svg`)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,10 +39,8 @@ SOFTWARE.
 The following portions of this repository are licensed under the Creative
 Commons Attribution 4.0 International License (CC BY 4.0):
 
-  - All prose and sample content under `content/` (`pages/`, `posts/`,
-    `projects/`)
   - All written brand documentation (`README.md`, `SKILL.md`, the
-    voice & tone / visual-foundations sections)
+    voice & tone / visual-foundations sections, `CHANGELOG.md`)
 
 You are free to share and adapt this content for any purpose, even
 commercially, under the condition that you give appropriate credit to
@@ -62,8 +56,9 @@ Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
 and CC BY licenses granted above do NOT grant any rights to use these
 trademarks in a way that implies endorsement or affiliation. Forks or
 derivatives of this design system must remove the Arcane Labs, Longeviti,
-and Vael word marks, logos, and favicon (`assets/favicon.svg`,
-`public/favicon.svg`, the ASCII wordmark in `src/routes/Home.tsx`) before
-public deployment.
+and Vael word marks, logos, and favicon (`assets/favicon.svg`) before
+public deployment. The favicon and the ASCII wordmark glyph composition
+are brand identity and are not licensed for reuse outside Arcane Labs
+properties.
 
 For trademark and branding inquiries, contact contact@arcanelabs.info.
