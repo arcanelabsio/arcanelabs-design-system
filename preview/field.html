@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form fields</title>
+<link rel="stylesheet" href="card.css">
+<link rel="stylesheet" href="../editorial.css">
+<style>
+  .col-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 28px;
+  }
+  @media (max-width: 640px) { .col-grid { grid-template-columns: 1fr; } }
+  .specimen-label {
+    color: var(--amber);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    margin: 0 0 8px;
+  }
+  .specimen-label::before { content: "["; color: var(--muted); }
+  .specimen-label::after  { content: "]"; color: var(--muted); }
+  .section { margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Form fields &nbsp;·&nbsp; .lh__field — input types × states</div>
+
+  <div class="col-grid">
+    <div>
+      <p class="specimen-label">TEXT — DEFAULT</p>
+      <div class="lh__field">
+        <label class="lh__field__label" for="t1">Display name</label>
+        <input class="lh__field__input" id="t1" type="text" placeholder="ada lovelace">
+        <p class="lh__field__helper">Shown next to your posts.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="specimen-label">EMAIL — REQUIRED</p>
+      <div class="lh__field">
+        <label class="lh__field__label" for="t2" data-required>Email</label>
+        <input class="lh__field__input" id="t2" type="email" required placeholder="you@studio.dev">
+        <p class="lh__field__helper">We'll send a confirmation link.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="specimen-label">PASSWORD — FOCUSED (simulated)</p>
+      <div class="lh__field">
+        <label class="lh__field__label" for="t3" data-required>Password</label>
+        <input class="lh__field__input" id="t3" type="password" value="••••••••"
+               style="border-color:var(--amber); border-left-color:var(--amber); outline:var(--focus-ring-width) solid var(--mint); outline-offset:var(--focus-ring-offset);">
+        <p class="lh__field__helper">Min 12 characters; tabular numerals OK.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="specimen-label">EMAIL — ERROR (aria-invalid)</p>
+      <div class="lh__field">
+        <label class="lh__field__label" for="t4" data-required>Email</label>
+        <input class="lh__field__input" id="t4" type="email"
+               value="not.an.email" aria-invalid="true" aria-describedby="t4-err">
+        <p class="lh__field__helper" id="t4-err" data-error="true">Use a valid address — domain looks malformed.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="specimen-label">SELECT — DEFAULT</p>
+      <div class="lh__field">
+        <label class="lh__field__label" for="t5">Status</label>
+        <select class="lh__field__input" id="t5">
+          <option>Shipping.</option>
+          <option>Active build.</option>
+          <option>Frozen at v1.2.0.</option>
+          <option>Archived.</option>
+        </select>
+        <p class="lh__field__helper">Drives the project card chip.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="specimen-label">TEXTAREA — DISABLED</p>
+      <div class="lh__field">
+        <label class="lh__field__label" for="t6">Release notes</label>
+        <textarea class="lh__field__input" id="t6" disabled>Locked — open for edit after passing review.</textarea>
+        <p class="lh__field__helper">Field is read-only until review passes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">Field row &nbsp;·&nbsp; .lh__field-row (auto-fit columns, stacks under 640px)</div>
+    <div class="lh__field-row">
+      <div class="lh__field">
+        <label class="lh__field__label" for="r1" data-required>First name</label>
+        <input class="lh__field__input" id="r1" type="text" placeholder="Ada">
+      </div>
+      <div class="lh__field">
+        <label class="lh__field__label" for="r2" data-required>Last name</label>
+        <input class="lh__field__input" id="r2" type="text" placeholder="Lovelace">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -23,6 +23,84 @@ _Nothing yet._
 
 ---
 
+## [0.3.0] — 2026-04-26
+
+Web-app enrichment: ship the first app-surface primitives so any
+arcanelabsio web app (recallable today, future ones tomorrow) can
+build interactive surfaces in the brand language without re-forking
+buttons and form fields. Strictly additive.
+
+This is a MINOR bump. No existing token, class, or asset value
+changed. v0.2.0 consumers see no behavioral difference unless they
+opt into the new classes.
+
+**Mobile / Flutter is now formally out of scope.** Arcanelabsio's
+mobile apps (longeviti, vael) maintain their own design systems by
+design — Material 3, different palettes, different type families.
+The README, SKILL, and `docs/web-apps.md` say this explicitly to
+prevent future contributors from quietly cross-pollinating.
+
+### Added
+
+- **`.lh__btn`** — buttons with 4 variants (`--primary`,
+  `--secondary` / default, `--ghost`, `--destructive`), 5 states
+  (default, hover, focus-visible, `[disabled]`,
+  `[data-loading="true"]` with CSS-only spinner that respects
+  `prefers-reduced-motion`), and 3 sizes (`--sm` 32px, default
+  44px, `--lg` 52px). Built on the editorial `.lh__list` row
+  treatment — mint left-border, amber on hover, 2px rightward
+  translate.
+- **`.lh__btn-row`** — inline button group with 8px gap (touch
+  spacing floor).
+- **`.lh__field`** — form fields. Wrapper + `__label` (with
+  `[data-required]` rendering an amber `*`) + `__input` (input,
+  select, textarea — select gets a mint chevron via inline SVG
+  background) + `__helper` (with `[data-error="true"]` switching
+  to red and a `!` prefix). States: default, focus (amber border +
+  mint ring), `aria-invalid="true"` (red left-border),
+  `[disabled]`, `[readonly]`.
+- **`.lh__field-row`** — responsive field grid; auto-fit columns
+  at 220px min, stacks under 640px.
+- **`preview/btn.html`** — 4 variants × 5 states + 3 sizes + an
+  inline-row example. Self-contained; loads `card.css` and
+  `../editorial.css`.
+- **`preview/field.html`** — 6 specimens (text, email, password
+  focused, email error, select, textarea disabled) + a field-row
+  example. Self-contained.
+- **`docs/web-apps.md`** — class family by context, state
+  conventions (loading / disabled / error / focus / touch),
+  keyboard expectations, markup patterns, voice in app copy,
+  explicit v0.3.0 deferred list.
+- **`docs/accessibility.md`** — computed WCAG 2.1 contrast table
+  for every accent on every surface (mint AAA on all surfaces;
+  red drops to AA on `--bg-2` / `--subtle`), the formula in
+  Python so future contributors can reproduce, plus rules for
+  touch targets, focus, ARIA, color-not-only, motion, keyboard,
+  zoom, and a pre-ship checklist.
+- **18 new CSS tokens** in `colors_and_type.css`:
+  - 8 spacing scale: `--space-1` (4px) through `--space-8` (64px),
+    on the 4-step / 8dp rhythm
+  - 3 interactive state opacities: `--state-disabled-opacity` (0.4),
+    `--state-pressed-opacity` (0.7), `--state-loading-opacity` (0.6)
+  - Touch + focus floor: `--touch-target-min` (44px),
+    `--focus-ring-width` (2px), `--focus-ring-offset` (3px)
+  - Z-index scale: `--z-base` (0), `--z-overlay` (100),
+    `--z-modal` (1000), `--z-toast` (1100)
+
+### Deferred to v0.4+
+
+Modal / sheet / toast / drawer; tables and data display;
+empty / loading-skeleton / error-state components; tabs /
+breadcrumbs / badges / chips; app shell (sidebar, topbar);
+light mode (explicit non-goal — brand is dark-only).
+
+### Migration
+
+None. Existing consumers continue to work unchanged. Opt into the
+new classes when building interactive web-app surfaces.
+
+---
+
 ## [0.2.0] — 2026-04-26
 
 Restructure: focus the repo on cross-app design elements only. The
@@ -134,6 +212,7 @@ repo, separate from the company-site implementation.
   imagery and no gradient hero. If that scope expands, it gets a
   separate document.
 
-[Unreleased]: https://github.com/arcanelabsio/arcanelabs-design-system/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/arcanelabsio/arcanelabs-design-system/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.3.0
 [0.2.0]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.2.0
 [0.1.0]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.1.0

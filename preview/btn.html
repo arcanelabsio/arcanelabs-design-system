@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="card.css">
+<link rel="stylesheet" href="../editorial.css">
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 110px repeat(5, 1fr);
+    gap: 12px 14px;
+    align-items: center;
+  }
+  .grid h4 {
+    margin: 0;
+    color: var(--fg-mute);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .grid > .row-label {
+    color: var(--amber);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .grid > .row-label::before { content: "["; color: var(--muted); }
+  .grid > .row-label::after  { content: "]"; color: var(--muted); }
+  .section { margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Buttons &nbsp;·&nbsp; .lh__btn — variants × states</div>
+
+  <div class="grid">
+    <div></div>
+    <h4>Default</h4>
+    <h4>Hover</h4>
+    <h4>Focus</h4>
+    <h4>Disabled</h4>
+    <h4>Loading</h4>
+
+    <div class="row-label">PRIMARY</div>
+    <button class="lh__btn lh__btn--primary">Save</button>
+    <button class="lh__btn lh__btn--primary" style="border-left-color:var(--amber); transform:translateX(2px); color:var(--mint-soft); border-color:var(--amber);">Save</button>
+    <button class="lh__btn lh__btn--primary" style="outline:var(--focus-ring-width) solid var(--mint); outline-offset:var(--focus-ring-offset);">Save</button>
+    <button class="lh__btn lh__btn--primary" disabled>Save</button>
+    <button class="lh__btn lh__btn--primary" data-loading="true">Save</button>
+
+    <div class="row-label">SECONDARY</div>
+    <button class="lh__btn">Cancel</button>
+    <button class="lh__btn" style="border-left-color:var(--amber); transform:translateX(2px);">Cancel</button>
+    <button class="lh__btn" style="outline:var(--focus-ring-width) solid var(--mint); outline-offset:var(--focus-ring-offset);">Cancel</button>
+    <button class="lh__btn" disabled>Cancel</button>
+    <button class="lh__btn" data-loading="true">Cancel</button>
+
+    <div class="row-label">GHOST</div>
+    <button class="lh__btn lh__btn--ghost">Skip</button>
+    <button class="lh__btn lh__btn--ghost" style="color:var(--amber); border-left-color:var(--amber); background:var(--subtle);">Skip</button>
+    <button class="lh__btn lh__btn--ghost" style="outline:var(--focus-ring-width) solid var(--mint); outline-offset:var(--focus-ring-offset);">Skip</button>
+    <button class="lh__btn lh__btn--ghost" disabled>Skip</button>
+    <button class="lh__btn lh__btn--ghost" data-loading="true">Skip</button>
+
+    <div class="row-label">DESTRUCT.</div>
+    <button class="lh__btn lh__btn--destructive">Delete</button>
+    <button class="lh__btn lh__btn--destructive" style="color:#ff8585; border-color:#ff8585; border-left-color:#ff8585; transform:translateX(2px);">Delete</button>
+    <button class="lh__btn lh__btn--destructive" style="outline:var(--focus-ring-width) solid var(--mint); outline-offset:var(--focus-ring-offset);">Delete</button>
+    <button class="lh__btn lh__btn--destructive" disabled>Delete</button>
+    <button class="lh__btn lh__btn--destructive" data-loading="true">Delete</button>
+  </div>
+
+  <div class="section">
+    <div class="label">Sizes &nbsp;·&nbsp; .lh__btn--sm | default | .lh__btn--lg</div>
+    <div class="lh__btn-row">
+      <button class="lh__btn lh__btn--primary lh__btn--sm">Small</button>
+      <button class="lh__btn lh__btn--primary">Medium</button>
+      <button class="lh__btn lh__btn--primary lh__btn--lg">Large</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">Inline row &nbsp;·&nbsp; .lh__btn-row (8px gap, mobile-safe touch spacing)</div>
+    <div class="lh__btn-row">
+      <button class="lh__btn lh__btn--primary">Save changes</button>
+      <button class="lh__btn">Discard</button>
+      <button class="lh__btn lh__btn--ghost">Help</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

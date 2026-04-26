@@ -1038,3 +1038,266 @@ a { color: inherit; }
   padding: 0;
   margin: 0;
 }
+
+/* ======================================================================
+   v0.3.0 — App-surface components
+   The editorial classes above target site/post surfaces. The classes
+   below target web-app surfaces (forms, dashboards, settings). Both
+   use the same tokens and visual language; reach for the right family
+   per `docs/web-apps.md`.
+   ====================================================================== */
+
+/* ---------- Buttons ---------- */
+/*
+  Markup:
+    <button class="lh__btn lh__btn--primary">Save</button>
+    <button class="lh__btn" disabled>Cancel</button>
+    <button class="lh__btn lh__btn--destructive" data-loading="true">Delete</button>
+
+  Variants:  .lh__btn--primary | .lh__btn--secondary (default) | .lh__btn--ghost | .lh__btn--destructive
+  Sizes:     .lh__btn--sm (32px) | default (44px) | .lh__btn--lg (52px)
+  States:    :hover, :focus-visible, [disabled], [data-loading="true"]
+*/
+.lh__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  position: relative;
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-4);
+  font-family: var(--f-mono);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--fg);
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--mint);
+  border-radius: 0 var(--r-control) var(--r-control) 0;
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--t-fast), background-color var(--t-fast),
+              border-color var(--t-fast), transform var(--t-mid),
+              opacity var(--t-fast);
+}
+.lh__btn:hover {
+  border-left-color: var(--amber);
+  transform: translateX(2px);
+}
+.lh__btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--mint);
+  outline-offset: var(--focus-ring-offset);
+}
+.lh__btn:active {
+  opacity: var(--state-pressed-opacity);
+  transform: translateX(2px);
+}
+
+/* Variant: primary — mint foreground, the "do this" button */
+.lh__btn--primary {
+  color: var(--mint);
+  border-color: var(--mint);
+  border-left-color: var(--mint);
+}
+.lh__btn--primary:hover {
+  color: var(--mint-soft);
+  border-color: var(--amber);
+  border-left-color: var(--amber);
+}
+
+/* Variant: ghost — no border, no fill, used inside dense surfaces */
+.lh__btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  border-left-color: transparent;
+  color: var(--fg-mute);
+}
+.lh__btn--ghost:hover {
+  color: var(--amber);
+  border-left-color: var(--amber);
+  background: var(--subtle);
+}
+
+/* Variant: destructive — red, paired with confirm flows */
+.lh__btn--destructive {
+  color: var(--red);
+  border-color: var(--red);
+  border-left-color: var(--red);
+}
+.lh__btn--destructive:hover {
+  color: #ff8585;                  /* lighter red for hover; not a token (one-off) */
+  border-color: #ff8585;
+  border-left-color: #ff8585;
+  transform: translateX(2px);
+}
+
+/* Sizes */
+.lh__btn--sm {
+  min-height: 32px;
+  padding: 0 var(--space-3);
+  font-size: 12.5px;
+}
+.lh__btn--lg {
+  min-height: 52px;
+  padding: 0 var(--space-5);
+  font-size: 14.5px;
+}
+
+/* State: disabled — semantic [disabled] attribute, not a class */
+.lh__btn[disabled],
+.lh__btn[aria-disabled="true"] {
+  opacity: var(--state-disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* State: loading — [data-loading="true"], spinner via pseudo-element.
+   Respects prefers-reduced-motion via the global rule in colors_and_type.css. */
+.lh__btn[data-loading="true"] {
+  opacity: var(--state-loading-opacity);
+  pointer-events: none;
+  color: transparent;              /* hide label; spinner replaces it */
+}
+.lh__btn[data-loading="true"]::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;  /* invisible (color: transparent) */
+  border-top-color: var(--mint);
+  border-radius: 50%;
+  animation: lh-btn-spin 700ms linear infinite;
+}
+.lh__btn--destructive[data-loading="true"]::after { border-top-color: var(--red); }
+.lh__btn--ghost[data-loading="true"]::after { border-top-color: var(--amber); }
+@keyframes lh-btn-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .lh__btn[data-loading="true"]::after { animation: none; }
+}
+
+/* Buttons inline together — preserve 8px gap (touch-spacing rule) */
+.lh__btn-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ---------- Form fields ---------- */
+/*
+  Markup:
+    <div class="lh__field">
+      <label class="lh__field__label" for="email" data-required>Email</label>
+      <input class="lh__field__input" id="email" type="email" required>
+      <p class="lh__field__helper">We'll send a confirmation link.</p>
+    </div>
+
+  Error markup:
+    <input class="lh__field__input" aria-invalid="true" aria-describedby="email-err">
+    <p class="lh__field__helper" id="email-err" data-error="true">Use a valid email.</p>
+*/
+.lh__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+}
+.lh__field__label {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--fg-mute);
+}
+.lh__field__label::before { content: "["; color: var(--muted); }
+.lh__field__label::after { content: "]"; color: var(--muted); }
+.lh__field__label[data-required]::after {
+  content: "] *";
+  color: var(--amber);
+}
+
+.lh__field__input,
+select.lh__field__input,
+textarea.lh__field__input {
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--f-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--fg);
+  background: var(--subtle);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--mint);
+  border-radius: 0 var(--r-control) var(--r-control) 0;
+  box-sizing: border-box;
+  transition: border-color var(--t-fast), background-color var(--t-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+textarea.lh__field__input {
+  min-height: calc(var(--touch-target-min) * 2);
+  line-height: 1.6;
+  resize: vertical;
+}
+.lh__field__input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.lh__field__input:hover {
+  border-color: var(--fg-mute);
+}
+.lh__field__input:focus {
+  outline: none;
+  border-color: var(--amber);
+  border-left-color: var(--amber);
+}
+.lh__field__input:focus-visible {
+  outline: var(--focus-ring-width) solid var(--mint);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* State: error — drives red left-border + red helper */
+.lh__field__input[aria-invalid="true"] {
+  border-color: var(--red);
+  border-left-color: var(--red);
+}
+
+/* State: disabled / readonly */
+.lh__field__input[disabled],
+.lh__field__input[readonly] {
+  opacity: var(--state-disabled-opacity);
+  cursor: not-allowed;
+}
+.lh__field__input[readonly] { cursor: default; }
+
+/* Helper text — secondary by default, red when [data-error="true"] */
+.lh__field__helper {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+.lh__field__helper::before { content: "// "; color: var(--muted); }
+.lh__field__helper[data-error="true"] { color: var(--red); }
+.lh__field__helper[data-error="true"]::before { content: "! "; color: var(--red); }
+
+/* Select chevron — inline SVG via background, mint */
+select.lh__field__input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%2300f0a0' stroke-width='1.5'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-6);
+}
+
+/* Field row — multiple fields side-by-side on wide screens */
+.lh__field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+@media (max-width: 640px) {
+  .lh__field-row { grid-template-columns: 1fr; }
+}

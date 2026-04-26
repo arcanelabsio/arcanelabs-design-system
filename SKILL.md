@@ -11,25 +11,34 @@ Everything you need is in this folder:
 
 - **`README.md`** — full system documentation. Brand context, voice & tone, visual foundations, iconography, caveats. **Read this first.**
 - **`colors_and_type.css`** — design tokens as CSS custom properties. `@import` or copy.
-- **`editorial.css`** — the full component stylesheet. Class-based (`.lh`, `.lh__chrome`, `.lh__nav`, `.lh__list`, `.lh__post`, `.lh__sep`, `.lh__meta`, etc). Depends on tokens in `colors_and_type.css`.
+- **`editorial.css`** — the full component stylesheet. Two families:
+  - Editorial (site) classes: `.lh`, `.lh__chrome`, `.lh__nav`, `.lh__list`, `.lh__post`, `.lh__sep`, `.lh__meta`, etc.
+  - App-surface classes (added in v0.3.0): `.lh__btn` (primary/secondary/ghost/destructive variants, with hover/focus/disabled/loading states and 3 sizes), `.lh__field` (input/select/textarea + label + helper, with focus/error/disabled states), `.lh__btn-row`, `.lh__field-row`.
+  - Both families share tokens; mix freely.
 - **`assets/`** — favicon + the four icons (GitHub, Instagram, X, Mail).
-- **`preview/`** — 27 self-contained HTML specimens, one per token or component. Open any in a browser to see the live appearance. They double as the visual contract — token or stylesheet changes that alter how these render are breaking.
+- **`preview/`** — 29 self-contained HTML specimens. Open any in a browser to see the live appearance. They double as the visual contract — token or stylesheet changes that alter how these render are breaking.
+- **`docs/web-apps.md`** — when to reach for which class family; state conventions; keyboard expectations; markup patterns; voice in app copy.
+- **`docs/accessibility.md`** — computed WCAG contrast table; touch-target floor; focus / motion / ARIA / keyboard rules.
+
+This is a **web-only** design system. Mobile apps in the org (longeviti, vael) maintain their own design systems on purpose. Don't try to bend this skill to mobile/Flutter/Swift work.
 
 For a worked example of the system composed into a real app, see the live [arcanelabs.info](https://arcanelabs.info) site (or its source repo). This repo deliberately ships **no implementation code** — apps wire the classes into their own framework.
 
 ## How to use it
 
 1. **Read `README.md` in full** before producing anything — voice and micro-conventions (prefix glyphs, bracketed labels, em-dash heavy copy, period-terminated status labels) are load-bearing.
-2. **Link both stylesheets** in that order:
+2. **Pick the right class family for the task.** Editorial (site, post, hero, nav, list) for content surfaces. App-surface (`.lh__btn`, `.lh__field`) for interactive web-app surfaces. Both share tokens; mix freely. See `docs/web-apps.md` for the family-by-context table.
+3. **Read `docs/accessibility.md` before shipping any interactive surface.** Contrast, touch targets, focus, ARIA, motion. Non-negotiable.
+4. **Link both stylesheets** in that order:
    ```html
    <link rel="stylesheet" href="colors_and_type.css">
    <link rel="stylesheet" href="editorial.css">
    ```
    …or copy the files next to your new HTML and adjust paths.
-3. **Use the real class names.** Every component is pre-named in `editorial.css` — don't invent parallel class systems. New pages are almost always `.lh > .lh__chrome + .lh__inner > .lh__nav + screens + .lh__footer`.
-4. **Fonts**: Load JetBrains Mono from Google Fonts (preconnect + `?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500`). This is what the live site ships; there are no vendored `.woff2` files. If the user needs a local build, flag the decision and ask.
-5. **Copy is part of the design.** Match the voice samples in README. Every label, status, rule is period-terminated. Backticks for product names in prose. Em-dashes everywhere.
-6. **No imagery, no illustration, no gradient fills.** The only background texture is the 40-px mint grid at ~1.5% alpha. The only images in the system are the favicon and four inline SVG icons.
+5. **Use the real class names.** Every component is pre-named in `editorial.css` — don't invent parallel class systems. Editorial pages are almost always `.lh > .lh__chrome + .lh__inner > .lh__nav + screens + .lh__footer`. App-surface pages compose `.lh__field` blocks inside `<form>` and use `.lh__btn-row` for action groups.
+6. **Fonts**: Load JetBrains Mono from Google Fonts (preconnect + `?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500`). This is what the live site ships; there are no vendored `.woff2` files. If the user needs a local build, flag the decision and ask.
+7. **Copy is part of the design.** Match the voice samples in README. Every label, status, rule is period-terminated. Backticks for product names in prose. Em-dashes everywhere. App copy follows the same voice — see `docs/web-apps.md` §5.
+8. **No imagery, no illustration, no gradient fills.** The only background texture is the 40-px mint grid at ~1.5% alpha. The only images in the system are the favicon and four inline SVG icons.
 
 ## Quick starters
 

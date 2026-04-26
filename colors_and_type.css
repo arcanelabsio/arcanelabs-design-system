@@ -93,6 +93,37 @@
   --t-mid: 160ms ease;     /* list-card translate + border */
   --t-slow: 240ms ease;    /* theme transitions */
   /* No bounce, no spring. Linear-ease only. */
+
+  /* ====================================================================
+     v0.3.0 — Web-app surface tokens
+     Added for app-surface components (.lh__btn, .lh__field). Layered on
+     top of the editorial token set; no existing values changed.
+     ==================================================================== */
+
+  /* ---------- Spacing scale (4-step rhythm, 8dp-aligned) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ---------- Interactive states ---------- */
+  --state-disabled-opacity: 0.4;
+  --state-pressed-opacity: 0.7;
+  --state-loading-opacity: 0.6;
+
+  /* ---------- Touch & layering ---------- */
+  --touch-target-min: 44px;        /* iOS HIG floor; 48px floor for Android M3 */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+
+  --z-base: 0;
+  --z-overlay: 100;                /* tooltips, popovers */
+  --z-modal: 1000;                 /* modals, sheets */
+  --z-toast: 1100;                 /* toasts above modals */
 }
 
 /* ======================================================================

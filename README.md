@@ -48,23 +48,33 @@ Root files:
   `.lh__list`, etc). Depends on the tokens in `colors_and_type.css`.
 - **`assets/`** — favicon and the four inline-extracted brand icons
   (GitHub, Instagram, X, Mail) as standalone SVGs.
-- **`preview/`** — 27 self-contained HTML specimens, one per token
+- **`preview/`** — 29 self-contained HTML specimens, one per token
   or component. Open any of them in a browser to see the live
   appearance. Together they document the visual contract:
   consumers should treat changes that alter how these specimens
   render as breaking.
+- **`docs/`** — operator and consumer documentation:
+  - `web-apps.md` — when to reach for which class family; state
+    conventions; keyboard expectations; markup patterns.
+  - `accessibility.md` — contrast table (computed, not handwaved),
+    touch-target floor, focus / motion / keyboard rules.
 - **`CHANGELOG.md`** — every change to tokens, stylesheet, or assets.
   Consumers that vendor this should pin to a row.
 - **`STATE.md`** — operator-local current-phase tracker. Not part
   of the design contract; safe to ignore from a consuming app.
 
-Reference implementations are in the consuming apps. The first one
+Reference implementations are in the consuming web apps. The first
 is [`arcanelabsio/arcanelabs.info`](https://github.com/arcanelabsio/arcanelabs.info)
 (Vite 5 + React 18 + TypeScript + react-router 6 + SSG prerender) —
 look there if you need to see how the classes are wired into a real
-React app's JSX. Future consumers (Recallable, Vael, Longeviti) will
-each implement their own JSX/Swift/Flutter wiring; this repo
-deliberately ships *no* implementation code.
+React app's JSX. The second is `arcanelabsio/recallable`. Both are
+web apps; this repo ships **no implementation code**.
+
+> ⚠️ **Mobile / Flutter is out of scope.** The org's mobile apps
+> (`longeviti-app`, `vael`) maintain their own design systems by
+> design — Material 3, different palettes, different type families.
+> Don't try to bend this repo to serve them. This is a **web-only**
+> design system.
 
 ---
 
@@ -113,6 +123,54 @@ ships the matching update. No silent drift.
 - **Not a place to land app-specific implementations.** Routes,
   content, and feature code belong in the consuming repo. This
   one ships shared visual vocabulary only.
+- **Not a cross-platform reference.** Web only. Mobile apps in the
+  org maintain their own design systems on purpose.
+
+---
+
+## Web-app consumption
+
+v0.3.0 added the first **app-surface primitives** on top of the
+editorial system. If you're building a web app surface (forms,
+dashboards, settings) inside an arcanelabsio repo, reach for these
+first; they layer on the same tokens as the editorial classes, so
+mixing is free.
+
+### Today's app primitives
+
+- **`.lh__btn`** — buttons. Variants: `--primary`, default
+  (`secondary`), `--ghost`, `--destructive`. Sizes: `--sm` (32px),
+  default (44px), `--lg` (52px). States: hover, focus, active,
+  `[disabled]`, `[data-loading="true"]`. See `preview/btn.html`.
+- **`.lh__field`** — form fields. Wrapper + `__label` + `__input`
+  (input/select/textarea) + `__helper`. States: default, focus,
+  `aria-invalid="true"` (error), `[disabled]`/`[readonly]`. See
+  `preview/field.html`.
+- **`.lh__btn-row`** and **`.lh__field-row`** — responsive layout
+  helpers that enforce the 8px touch-spacing floor and the 220px
+  field-min-width breakpoint.
+
+### Class family by context
+
+| Context | Reach for |
+|---|---|
+| Studio site, blog post, landing | `.lh`, `.lh__post`, `.lh__hero`, `.lh__list` |
+| Web app interactive surface | `.lh__btn`, `.lh__field` (+ editorial chrome optional) |
+| Pure data app | `.lh__btn`, `.lh__field` only |
+
+Full guidance — state conventions, keyboard expectations, markup
+patterns, voice in app copy — lives in
+[`docs/web-apps.md`](docs/web-apps.md). Accessibility floor
+(contrast table, touch targets, ARIA, motion) lives in
+[`docs/accessibility.md`](docs/accessibility.md). Read both before
+shipping interactive surfaces.
+
+### What v0.3.0 deferred
+
+Modals / sheets / toasts / tables / tabs / breadcrumbs / app shell
+are all **deferred to v0.4+** and prioritised by real consumer
+demand, not speculation. If you hit one of these gaps in a real
+consumer, file an issue or open a PR.
 
 ---
 
