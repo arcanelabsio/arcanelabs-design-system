@@ -55,6 +55,12 @@ moves** below.
 
 ## Last update
 
+2026-04-26 — added `docs/responsive.md` (four-breakpoint system,
+`clamp()` vs `@media`, container widths, desktop-first stance, full
+behavior inventory). Pure documentation; no CSS change. Recorded
+under `[Unreleased]` in CHANGELOG; will roll into the next tagged
+release.
+
 2026-04-26 — v0.3.0 web-app enrichment. Added `.lh__btn` (4 variants
 × 5 states × 3 sizes), `.lh__field` (input/select/textarea + label +
 helper, 4 states), `.lh__btn-row`, `.lh__field-row`. 18 new tokens.

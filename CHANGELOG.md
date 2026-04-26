@@ -19,7 +19,15 @@ Versions follow [SemVer](https://semver.org/spec/v2.0.0.html), where:
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+
+- **`docs/responsive.md`** — documents the four-breakpoint system
+  (1060 / 768 / 640 / 380), the `clamp()` vs `@media` philosophy,
+  container width conventions, the desktop-first stance, and a
+  full inventory of behavior at each breakpoint. Pure documentation;
+  no CSS change. Codifies what `editorial.css` already implements
+  so future contributors don't have to grep `@media` to learn the
+  conventions.
 
 ---
 

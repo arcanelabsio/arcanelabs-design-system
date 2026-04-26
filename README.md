@@ -58,6 +58,9 @@ Root files:
     conventions; keyboard expectations; markup patterns.
   - `accessibility.md` — contrast table (computed, not handwaved),
     touch-target floor, focus / motion / keyboard rules.
+  - `responsive.md` — the four-breakpoint system, `clamp()` vs
+    `@media`, container widths, desktop-first convention, full
+    inventory of behavior at each threshold.
 - **`CHANGELOG.md`** — every change to tokens, stylesheet, or assets.
   Consumers that vendor this should pin to a row.
 - **`STATE.md`** — operator-local current-phase tracker. Not part
@@ -162,7 +165,10 @@ Full guidance — state conventions, keyboard expectations, markup
 patterns, voice in app copy — lives in
 [`docs/web-apps.md`](docs/web-apps.md). Accessibility floor
 (contrast table, touch targets, ARIA, motion) lives in
-[`docs/accessibility.md`](docs/accessibility.md). Read both before
+[`docs/accessibility.md`](docs/accessibility.md). Responsive
+behavior (breakpoints, `clamp()` vs `@media`, container widths,
+desktop-first convention) lives in
+[`docs/responsive.md`](docs/responsive.md). Read all three before
 shipping interactive surfaces.
 
 ### What v0.3.0 deferred
