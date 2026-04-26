@@ -1,5 +1,9 @@
 # Arcane Labs — Design System
 
+> **New here?** Read **[`docs/getting-started.md`](docs/getting-started.md)** first
+> — quick start, worked example, reading order, common pitfalls.
+> 5 minutes; you'll know everything you need to ship.
+
 > Terminal-window editorial. Monospace, dark, hairline-ruled, with
 > mint-and-amber accents on a near-black background. The whole
 > vocabulary is one idea — *this page is a zsh session in a macOS
@@ -54,6 +58,9 @@ Root files:
   consumers should treat changes that alter how these specimens
   render as breaking.
 - **`docs/`** — operator and consumer documentation:
+  - **`getting-started.md`** — front door. Quick start, worked
+    example, reading order, common pitfalls, the contract. Read
+    this first.
   - `web-apps.md` — when to reach for which class family; state
     conventions; keyboard expectations; markup patterns.
   - `accessibility.md` — contrast table (computed, not handwaved),

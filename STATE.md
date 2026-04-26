@@ -6,16 +6,19 @@
 
 ## Phase
 
-**Phase 3 — Web-app reference.** v0.3.0 adds the first app-surface
-primitives — `.lh__btn` (4 variants × 5 states × 3 sizes) and
-`.lh__field` (input/select/textarea with label + helper, 4 states) —
-plus 18 new tokens (spacing scale, state opacities, touch + focus
-floor, z-index), `docs/web-apps.md`, `docs/accessibility.md` (with
-computed WCAG contrast table). **Web-only**: mobile / Flutter is
-formally out of scope; longeviti and vael own their own design
-systems. Public at
+**Phase 4 — Stable v0.3.x; awaiting first wiring.** v0.3.0 shipped
+the app-surface primitives (`.lh__btn`, `.lh__field`); v0.3.1
+concluded the documentation arc with `docs/getting-started.md` (the
+front door), `docs/responsive.md`, `docs/accessibility.md`, and
+`docs/web-apps.md`. The system is now feature-complete for what's
+in scope today: tokens, two class families (editorial + app),
+brand assets, 29 preview specimens, four guideline docs, full
+SemVer contract documented for consumers. **Web-only** — mobile /
+Flutter formally out of scope. Public at
 [`arcanelabsio/arcanelabs-design-system`](https://github.com/arcanelabsio/arcanelabs-design-system),
-tagged `v0.3.0`. No web consumer has wired the new classes yet.
+tagged `v0.3.1`. **No web consumer has wired the new classes yet** —
+that's the next operator's job, and it'll surface the v0.4
+priorities by demand.
 
 ## Current micro-task
 
@@ -55,11 +58,16 @@ moves** below.
 
 ## Last update
 
+2026-04-26 — v0.3.1 documentation polish concluding the v0.3.x
+slice. Added `docs/getting-started.md` (front door — quick start,
+worked example, reading order, pitfalls, contract). README +
+SKILL elevated to point at it as the first read. CHANGELOG
+promoted the responsive doc + getting-started entries from
+[Unreleased] into v0.3.1. Tagged `v0.3.1` and pushed.
+
 2026-04-26 — added `docs/responsive.md` (four-breakpoint system,
 `clamp()` vs `@media`, container widths, desktop-first stance, full
-behavior inventory). Pure documentation; no CSS change. Recorded
-under `[Unreleased]` in CHANGELOG; will roll into the next tagged
-release.
+behavior inventory). Pure documentation; no CSS change.
 
 2026-04-26 — v0.3.0 web-app enrichment. Added `.lh__btn` (4 variants
 × 5 states × 3 sizes), `.lh__field` (input/select/textarea + label +

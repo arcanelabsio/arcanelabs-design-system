@@ -9,7 +9,8 @@ Use this skill when the user asks for work **in the Arcane Labs visual language*
 
 Everything you need is in this folder:
 
-- **`README.md`** — full system documentation. Brand context, voice & tone, visual foundations, iconography, caveats. **Read this first.**
+- **`docs/getting-started.md`** — front door. Quick start, worked example, reading order, pitfalls, contract. **Read this first.**
+- **`README.md`** — full system documentation. Brand context, voice & tone, visual foundations, iconography, caveats. Read after getting-started.
 - **`colors_and_type.css`** — design tokens as CSS custom properties. `@import` or copy.
 - **`editorial.css`** — the full component stylesheet. Two families:
   - Editorial (site) classes: `.lh`, `.lh__chrome`, `.lh__nav`, `.lh__list`, `.lh__post`, `.lh__sep`, `.lh__meta`, etc.
@@ -27,7 +28,7 @@ For a worked example of the system composed into a real app, see the live [arcan
 
 ## How to use it
 
-1. **Read `README.md` in full** before producing anything — voice and micro-conventions (prefix glyphs, bracketed labels, em-dash heavy copy, period-terminated status labels) are load-bearing.
+1. **Read `docs/getting-started.md` first**, then `README.md` in full — voice and micro-conventions (prefix glyphs, bracketed labels, em-dash heavy copy, period-terminated status labels) are load-bearing.
 2. **Pick the right class family for the task.** Editorial (site, post, hero, nav, list) for content surfaces. App-surface (`.lh__btn`, `.lh__field`) for interactive web-app surfaces. Both share tokens; mix freely. See `docs/web-apps.md` for the family-by-context table.
 3. **Read `docs/accessibility.md` before shipping any interactive surface.** Contrast, touch targets, focus, ARIA, motion. Non-negotiable.
 4. **Read `docs/responsive.md` when authoring layout.** Use the four named breakpoints (1060/768/640/380), `clamp()` for fluid scaling, `@media (max-width: ...)` for layout shifts. Desktop-first; don't mix in `min-width:` queries.

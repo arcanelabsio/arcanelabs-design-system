@@ -19,15 +19,43 @@ Versions follow [SemVer](https://semver.org/spec/v2.0.0.html), where:
 
 ## [Unreleased]
 
+_Nothing yet._
+
+---
+
+## [0.3.1] — 2026-04-26
+
+Documentation polish that concludes the v0.3.x design system slice.
+Pure docs additions; no CSS, no token, no asset change. Consumers
+on v0.3.0 see no behavioral difference; the new docs make it
+faster to onboard new builders (human or AI agent).
+
 ### Added
 
-- **`docs/responsive.md`** — documents the four-breakpoint system
+- **`docs/getting-started.md`** — front-door doc. Quick start
+  (vendor + link), pick-your-path table, complete worked example
+  (a settings page mixing editorial chrome with app primitives),
+  reading order, top 10 common pitfalls, the SemVer contract
+  restated for consumers, deferred-vs-non-goal map, "now go build"
+  closing. README and SKILL elevated to point at this as the
+  first read.
+- **`docs/responsive.md`** — codifies the four-breakpoint system
   (1060 / 768 / 640 / 380), the `clamp()` vs `@media` philosophy,
   container width conventions, the desktop-first stance, and a
-  full inventory of behavior at each breakpoint. Pure documentation;
-  no CSS change. Codifies what `editorial.css` already implements
-  so future contributors don't have to grep `@media` to learn the
-  conventions.
+  full inventory of behavior at each breakpoint. Captures what
+  `editorial.css` already implements so future contributors don't
+  have to grep `@media` to learn the conventions. SKILL gains a
+  step-4 instruction to read this when authoring layout.
+
+### Changed
+
+- **`README.md`** — top of file now points at `docs/getting-started.md`
+  as the first read. Index entry added for both new docs.
+  Web-app consumption section updated to reference all three
+  guideline docs.
+- **`SKILL.md`** — first bullet now points at `getting-started.md`
+  before `README.md`. Step 1 of "How to use it" updated. New
+  step 4 covers responsive guidance.
 
 ---
 
@@ -220,7 +248,8 @@ repo, separate from the company-site implementation.
   imagery and no gradient hero. If that scope expands, it gets a
   separate document.
 
-[Unreleased]: https://github.com/arcanelabsio/arcanelabs-design-system/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/arcanelabsio/arcanelabs-design-system/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.3.1
 [0.3.0]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.3.0
 [0.2.0]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.2.0
 [0.1.0]: https://github.com/arcanelabsio/arcanelabs-design-system/releases/tag/v0.1.0
